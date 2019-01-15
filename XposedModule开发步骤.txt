@@ -1,0 +1,42 @@
+使用Xposed进行Hook也分为如下几个步骤：
+
+0.引用 XposedBridge代码
+
+    方式一：下载jar包：https://jcenter.bintray.com/de/robv/android/xposed/api/
+    方式二：
+            repositories {
+                jcenter();
+            }
+
+            dependencies {
+                provided 'de.robv.android.xposed:api:82'
+            }
+
+1.在AndroidManifest.xml文件中配置插件名称与Api版本号
+
+<application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <!-- 模块描述 -->
+        <meta-data
+            android:name="xposeddescription"
+            android:value="一个登陆劫持的样例" />
+        <!-- 最低版本号 -->
+        <meta-data
+            android:name="xposedminversion"
+            android:value="30" />
+</application>
+
+2.新建一个入口类并继承并实现IXposedHookLoadPackage接口
+
+3.声明主入口路径
+需要在assets文件夹中新建一个xposed_init的文件，并在其中声明主入口类（全路径的类）。如这里我们的主入口类为com.yazao.xposed.Main
+
+4.使用findAndHookMethod方法Hook劫持登陆信息
+在com.yazao.xposed.Main类中的 handleLoadPackage() 方法中，调用XposedBridge.findAndHookMethod()

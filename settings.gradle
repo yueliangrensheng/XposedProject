@@ -1,0 +1,7 @@
+include ':XposedModule:HookModule', ':XposedDemo',
+        ':XposedModule:DouYin',
+        ':XposedModule:IVeryOne',
+        ':XposedModule:Hook_开发助手',
+        ':XposedModule:HookQuTouTiao'
+
+

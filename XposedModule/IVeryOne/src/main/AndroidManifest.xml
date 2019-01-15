@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.yazao.iveryone">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+
+        <!-- Xposed 配置 begin -->
+
+        <!-- xposedmodule： 一般设置为true,表示这是一个xposed模块 -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true"/>
+
+        <!--xposedminversion: XposedBridgeApi最低版本 -->
+        <meta-data
+            android:name="xposedminversion"
+            android:value="53"/>
+
+        <!-- xposeddescription: 一句话描述该模块的用途，可以引用string.xml中的字符串 -->
+        <meta-data
+            android:name="xposeddescription"
+            android:value="hook iveryone"/>
+
+        <!-- Xposed 配置 end -->
+
+
+        <activity android:name="com.yazao.iveryone.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN">
+                </action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
+                <data android:scheme="com.yazao.android"></data>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
